@@ -8,7 +8,7 @@ dicomlist = dir(fullfile(fileFolder,'000000*'));
 
 for cnt = 138 : 138    
     I{cnt} = dicomread(fullfile(fileFolder,dicomlist(cnt).name));
-    info=dicominfo(dicomlist(cnt).name); %info gia kathe eikona tou fakelou
+    info=dicominfo(dicomlist(cnt).name); % image info
     Y=imadjust(I{cnt});
     %figure, imshow(Y,[])
     %title('Imadjust')
@@ -78,19 +78,19 @@ for cnt = 138 : 138
         end
         k=k+1;
     end
-    figure;imshow(L,[])
-    title('Eikona meta tin efarmogi katofliou')
-    figure;imshow(B,[])
-    title('Pragmatiki eikona meta tin efarmogi katofliou')
+%    figure;imshow(L,[])
+%    title('Binary image after thresolding')
+%    figure;imshow(B,[])
+%   title('Initial image after thresholding'')
     
 end
 subplot(2,2,1);imshow(Y,[])
-title('Pragmatiki eikona-Imadjust')
+title('Initial image-Imadjust')
 subplot(2,2,2);imshow(ROI1,[])
-title('Imadust ROIs')
+title('Imadjust ROIs')
 subplot(2,2,3);imshow(L,[])
-title('Eikona meta tin efarmogi katofliou')
+title('Binary image after thresolding')
 subplot(2,2,4);imshow(B,[])
-title('Pragmatiki eikona meta tin efarmogi katofliou')
+title('Initial image after thresholding')
 
 
