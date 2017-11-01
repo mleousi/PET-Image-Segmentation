@@ -1,4 +1,3 @@
-
 clear all;
 close all;
 clc
@@ -12,6 +11,7 @@ for cnt = 138 : 138
     Y=imadjust(I{cnt});
     %figure, imshow(Y,[])
     %title('Imadjust')
+    
     for i=1:info.Rows
         for j=1:info.Columns
             if Y(i,j)>=5817 && Y(i,j)<=65535
@@ -23,20 +23,18 @@ for cnt = 138 : 138
     end
     %figure, imshow(ROI,[])
     %title('ROIs')
+    
     ROI1=imadjust(ROI);
     figure, imshow(ROI1,[])
     title('Imadust ROIs')
     
     [x,y]=ginput(6) %graphical input
     h=roipoly(ROI1,x,y);
-    
-    
-    
+        
     anser=size(h);
     A1=double(h);
     figure,imshow(A1)
-    
-  
+      
     k=1;
     while k==1
         figure;imshow(ROI1)
@@ -52,7 +50,8 @@ for cnt = 138 : 138
         
         %act_conc=measured_activity=Pixel value(mean)/Image Scale Factor
         %Pixel value(mean)=sum(sum(h))/anser(1)*anser(2)
-        %Image Scale Factor=RescaleSlope*10^(-6)        
+        %Image Scale Factor=RescaleSlope*10^(-6)
+        
         injected_activity=3.7*10^6;
         act_conc_max=(sum(sum(h)))/info.RescaleSlope*10^(-6); %Pixel value(max)=(sum(sum(h)))
         SUVmax=act_conc_max*info.PatientWeight/injected_activity;
@@ -92,5 +91,3 @@ subplot(2,2,3);imshow(L,[])
 title('Binary image after thresolding')
 subplot(2,2,4);imshow(B,[])
 title('Initial image after thresholding')
-
-
